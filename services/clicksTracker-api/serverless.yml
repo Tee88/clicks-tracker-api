@@ -15,7 +15,7 @@ provider:
   runtime: nodejs12.x
   lambdaHashingVersion: 20201221
   variableSyntax: "\\${{([ ~:a-zA-Z0-9._@\\'\",\\-\\/\\(\\)]+?)}}"
-  stage: default
+  stage: predev
   profile: ${{self:custom.profiles.${{self:custom.stage}}}}
   region: us-east-1
 

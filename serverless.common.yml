@@ -3,7 +3,7 @@ custom:
   webpack:
     webpackConfig: "webpack.config.js"
   profiles:
-    default: default
+    predev: default
     dev: clicks-tracker-dev
     staging: clicks-tracker-staging
     prod: clicks-tracker-prod

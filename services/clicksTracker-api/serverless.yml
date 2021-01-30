@@ -21,5 +21,17 @@ provider:
   region: us-east-1
 
 functions:
-  hello:
-    handler: handler.hello
+  trackLink:
+    handler: src/api/trackLink.main
+    events:
+      - http:
+          path: trackLink
+          method: get
+          cors: true
+    iamRoleStatements:
+      - Effect: "Allow"
+        Action:
+          - logs:CreateLogStream
+          - logs:PutLogEvents
+          - logs:CreateLogGroup
+        Resource: "*"

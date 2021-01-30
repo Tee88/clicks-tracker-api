@@ -1,0 +1,9 @@
+custom:
+  stage: ${{opt:stage, self:provider.stage}}
+  webpack:
+    webpackConfig: "webpack.config.js"
+  profiles:
+    default: default
+    dev: clicks-tracker-dev
+    staging: clicks-tracker-staging
+    prod: clicks-tracker-prod

@@ -30,8 +30,8 @@ export function success(body) {
     return buildResponse(304, body);
   }
 
-  export function movedPermanently(body) {
-      const customHeaders = { Location: 'https://www.serverlessguru.com/'}
+  export function movedPermanently(body, requestedUrl) {
+      const customHeaders = { Location: requestedUrl}
     return buildResponse(301, body, customHeaders);
   }
   

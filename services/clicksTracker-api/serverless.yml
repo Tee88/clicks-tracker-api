@@ -25,7 +25,7 @@ functions:
     handler: src/api/trackLink.main
     events:
       - http:
-          path: trackLink
+          path: trackLink/{proxy+}
           method: get
           cors: true
     iamRoleStatements:

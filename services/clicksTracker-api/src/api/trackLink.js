@@ -2,7 +2,7 @@ import {movedPermanently} from "../../../../libs/response-lib"
 import platform from "platform";
 export async function main(event, context) {
     
-    
+    const requestedUrl = event.pathParameters.proxy
     const {sourceIp, userAgent} = event.requestContext.identity
 
     console.log("IP", sourceIp)
@@ -17,6 +17,6 @@ export async function main(event, context) {
     console.log("device",device)
     console.log("description",description)
     console.log("os",os)
-    return movedPermanently({ success: true })
+    return movedPermanently({ success: true }, requestedUrl)
 
 }

@@ -22,6 +22,16 @@ provider:
 
   environment:
     trackerTable: ${{self:custom.stage}}-clicksTracker
+  tracing:
+    apiGateway: true
+    lambda: true
+
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - xray:PutTraceSegments
+        - xray:PutTelemetryRecords
+      Resource: "*"
 
 functions:
   trackLink:

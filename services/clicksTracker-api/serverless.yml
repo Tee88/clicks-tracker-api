@@ -35,3 +35,9 @@ functions:
           - logs:PutLogEvents
           - logs:CreateLogGroup
         Resource: "*"
+      - Effect: "Allow"
+        Action:
+          - dynamodb:PutItem
+          - dynamodb:updateItem
+        Resource:
+          - Fn::ImportValue: ${{self:custom.stage}}-clicksTracker

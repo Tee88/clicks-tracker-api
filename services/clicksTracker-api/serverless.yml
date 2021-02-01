@@ -1,6 +1,6 @@
 service: clicks-tracker-api
 
-frameworkVersion: "2"
+frameworkVersion: "2.21.1"
 
 package:
   individually: true

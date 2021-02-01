@@ -1,4 +1,4 @@
-import {movedPermanently} from "../../../../libs/response-lib"
+import { found, failure } from "../../../../libs/response-lib";
 import platform from "platform";
 export async function main(event, context) {
     
@@ -19,4 +19,5 @@ export async function main(event, context) {
     console.log("os",os)
     return movedPermanently({ success: true }, requestedUrl)
 
+    return found({ success: true }, requestedUrl);
 }

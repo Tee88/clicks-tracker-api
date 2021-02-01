@@ -20,6 +20,9 @@ provider:
   profile: ${{self:custom.profiles.${{self:custom.stage}}}}
   region: us-east-1
 
+  environment:
+    trackerTable: ${{self:custom.stage}}-clicksTracker
+
 functions:
   trackLink:
     handler: src/api/trackLink.main

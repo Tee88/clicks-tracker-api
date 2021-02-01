@@ -1,23 +1,38 @@
 import { found, failure } from "../../../../libs/response-lib";
+import * as dynamoDbLib from "../../../../libs/dynamodb-lib";
+import Link from "../models/link";
+
 import platform from "platform";
+
+const link = new Link(dynamoDbLib);
+
 export async function main(event, context) {
-    
-    const requestedUrl = event.pathParameters.proxy
-    const {sourceIp, userAgent} = event.requestContext.identity
+  const requestedUrl = event.pathParameters.proxy;
+  const { sourceIp, userAgent } = event.requestContext.identity;
 
-    console.log("IP", sourceIp)
-    console.log("UA", userAgent)
+  const info = platform.parse(userAgent);
+  const {
+    name: browser,
+    version: browserVersion,
+    product: device,
+    description,
+  } = info;
+  const os = info.os.toString();
 
-    const info = platform.parse(userAgent)
-    const {name: browser, version: browserVersion, product: device,description} = info
-    const os =  info.os.toString()
+  const clickEventData = {
+    requestedUrl,
+    sourceIp,
+    browser,
+    browserVersion,
+    device,
+    os,
+    description,
+  };
 
-    console.log("browser",browser)
-    console.log("browserVersion",browserVersion)
-    console.log("device",device)
-    console.log("description",description)
-    console.log("os",os)
-    return movedPermanently({ success: true }, requestedUrl)
-
+  try {
+    await link.storeClickEvent(clickEventData);
     return found({ success: true }, requestedUrl);
+  } catch (e) {
+    return failure({ status: false, error: e.message });
+  }
 }

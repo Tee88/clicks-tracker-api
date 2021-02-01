@@ -48,7 +48,7 @@ export default class Link {
       UpdateExpression: "ADD clickCount :countInc SET updatedAt = :updatedAt",
     };
     await this.db.call("update", updateTotalLinkClickCountParams);
-    // // incerement (update) url/ip visit count (pk:url, sk:ip_<ip>#timestamp_<time>, par:count, ip:<ip>)
+    // // increment (update) url/ip visit count (pk:url, sk:ip_<ip>#timestamp_<time>, par:count, ip:<ip>)
     const updateTotalLinkClickPerIpCountParams = {
       TableName: process.env.trackerTable,
       Key: {

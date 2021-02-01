@@ -1,12 +1,10 @@
 {
-    "compilerOptions": {
-      "checkJs": true,
-      "resolveJsonModule": true
-    },
-    "exclude": ["node_modules"],
-    "typeAcquisition": {
-      "include": [
-          "jest"
-      ]
+  "compilerOptions": {
+    "checkJs": true,
+    "resolveJsonModule": true
+  },
+  "exclude": ["node_modules"],
+  "typeAcquisition": {
+    "include": ["jest"]
   }
-  }
+}

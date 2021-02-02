@@ -18,7 +18,7 @@ All AWS Infrastructure needs to be automated with IAC using Serverless Framework
 
 ## Setup
 
-This project is devided into 2 monorepos, one for the resources ([found here](https://github.com/Tee88/clicks-tracker-resources)) and one for the services themselves (this repo). To get the project up and running do the following:
+This project is divided into 2 monorepos, one for the resources ([found here](https://github.com/Tee88/clicks-tracker-resources)) and one for the services themselves (this repo). To get the project up and running do the following:
 
 - [Install](https://www.serverless.com/framework/docs/getting-started/) the Serverless framework
 - Make sure you have configured a `default` AWS profile on you local machine using the Serverless Framework CLI tool using this command `serverless config credentials --provider aws --key 1234 --secret 5678` or using the AWS CLI tool by running this command `aws configure`
@@ -39,7 +39,7 @@ This structure also helps with CI/CD, where you can link your git branches `dev`
 ## How the Link Tracker works
 
 The link/click Tracker MVP is based on 3 main AWS services, APIGW, Lambda and DynamoDB.
-The API has one endpoint `<API ROOT>/trackLink/{proxy+}` . The Frontend developer will use this endpoint on the client site and pass in the URL they desire to track like this `<API ROOT>/trackLink/https://www.serverlessguru.com/blog/10-big-serverless-re-invent-2020-announcements` . Whenever the end user clicks on the (for example a blog post link) a request `GET` will go throught APIGW to the Lambda which will handle the event and redirect the user to actual blog post using a `302 FOUND` response.
+The API has one endpoint `<API ROOT>/trackLink/{proxy+}` . The Frontend developer will use this endpoint on the client site and pass in the URL they desire to track like this `<API ROOT>/trackLink/https://www.serverlessguru.com/blog/10-big-serverless-re-invent-2020-announcements` . Whenever the end user clicks on the (for example a blog post link) a request `GET` will go through APIGW to the Lambda which will handle the event and redirect the user to actual blog post using a `302 FOUND` response.
 Even though most Link Trackers usually have a dedicated endpoint to generate a "trackable link", I decided to go the minimal path where we have a single endpoint that accepts any URL we want to track.
 
 I used `302 FOUND` instead of `301 MOVED PERMANENTLY` because `301` response is cacheable by default, which prevent the request from reaching our endpoint to capture the click event.

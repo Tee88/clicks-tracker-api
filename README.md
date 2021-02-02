@@ -21,7 +21,7 @@ All AWS Infrastructure needs to be automated with IAC using Serverless Framework
 This project is divided into 2 monorepos, one for the resources ([found here](https://github.com/Tee88/clicks-tracker-resources)) and one for the services themselves (this repo). To get the project up and running do the following:
 
 - [Install](https://www.serverless.com/framework/docs/getting-started/) the Serverless framework
-- Make sure you have configured a `default` AWS profile on you local machine using the Serverless Framework CLI tool using this command `serverless config credentials --provider aws --key 1234 --secret 5678` or using the AWS CLI tool by running this command `aws configure`
+- Make sure you have configured a `default` AWS profile on you local machine using the Serverless Framework CLI tool using this command `serverless config credentials --provider aws --key <Access Key ID> --secret <Secret Access Key>` or using the AWS CLI tool by running this command `aws configure`
 - Clone and deploy the resources monorepo using `sls deploy`
 - Clone and deploy the api monorepo (this repo) using `sls deploy`
 
